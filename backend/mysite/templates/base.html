@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html  lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./styles.css" />
+    <title>{% block title %}Home{% endblock %}</title>
+  </head>
+  <body style="color: #ff4400;
+  font-family: Arial, Helvetica, sans-serif;">
+    <header style="
+    padding-left: 30px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ff4400;">
+      <h1 style="
+      font-size: 28px;
+      text-decoration: none;
+      ">Comércio Eletrônico</h1>
+      <nav class="header-nav">
+        <ul style="
+         display: flex;
+        padding-right: 20px;">
+          <li style="
+          margin-right: 20px;
+          list-style: none;">
+            {% if user.is_authenticated %}
+              <a style="text-decoration: none; font-size: 20px; color: #ff4400;" href="{% url 'logout' %}">logout</a>
+            {% else %}
+          </li>
+          <li style="
+          margin-right: 20px;
+          list-style: none;">
+            <a style="text-decoration: none; font-size: 20px; color: #ff4400;" href="{% url 'login' %}">login</a>
+          </li>
+          <li style="
+          margin-right: 20px;
+          list-style: none;">
+            <a style="text-decoration: none; font-size: 20px; color: #ff4400;"
+            href="{% url 'signup' %}">signup</a>
+            {% endif %}
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+  </body>
+</html>
